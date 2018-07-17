@@ -23,6 +23,7 @@ import cvxpy as cvx
 
 # TODO change to cycle.
 
+
 class Tour(Assign):
     """ A permutation matrix that describes a single cycle.
         e.g. 1->3->5->2->4->1

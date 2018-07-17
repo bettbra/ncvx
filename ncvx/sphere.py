@@ -21,6 +21,7 @@ from .noncvx_variable import NonCvxVariable
 import cvxpy as cvx
 import numpy as np
 
+
 class Sphere(NonCvxVariable):
     """ A variable satisfying ||x||_2 = 1. """
     def __init__(self, rows=1, *args, **kwargs):

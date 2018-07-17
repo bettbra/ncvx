@@ -21,11 +21,13 @@ from .noncvx_variable import NonCvxVariable
 import cvxpy as cvx
 import numpy as np
 
+
 def Rank(rows, cols, k, M=None, symmetric=False):
     if symmetric:
         return SymmRank(rows, cols, k, M)
     else:
         return AsymmRank(rows, cols, k, M)
+
 
 class AsymmRank(NonCvxVariable):
     """ A variable satisfying Rank(X) <= k. """
@@ -59,6 +61,7 @@ class AsymmRank(NonCvxVariable):
             return []
         else:
             return [cvx.norm(self, 2) <= self.M]
+
 
 class SymmRank(AsymmRank):
     """ A symmetric variable satisfying Rank(X) <= k. """
