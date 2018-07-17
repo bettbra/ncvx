@@ -23,6 +23,7 @@ from itertools import product
 import numpy as np
 import cvxpy as cvx
 
+
 class Card(NonCvxVariable):
     """ A variable with constrained cardinality. """
     # k - the maximum cardinality of the variable.
@@ -48,7 +49,7 @@ class Card(NonCvxVariable):
         v_ind = sorted(indices, key=lambda ind: -abs(matrix[ind]))
         result = matrix.copy()
         for ind in v_ind[self.k:]:
-           result[ind] = 0
+            result[ind] = 0
         return np.maximum(-self.M, np.minimum(result, self.M))
 
     # Constrain all entries to be zero that correspond to

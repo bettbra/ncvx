@@ -21,6 +21,7 @@ from .noncvx_variable import NonCvxVariable
 import cvxpy as cvx
 import numpy as np
 
+
 class Integer(NonCvxVariable):
     """ An integer variable. """
     # M - upper bound on |x|
@@ -28,8 +29,8 @@ class Integer(NonCvxVariable):
         if M is None or np.any(M <= 0):
             raise Exception("Integer requires positive values for M.")
         self.M = np.floor(M)
-        if np.isscalar(self.M) and (rows, cols) != (1,1):
-            self.M = self.M*np.ones((rows,cols))
+        if np.isscalar(self.M) and (rows, cols) != (1, 1):
+            self.M = self.M*np.ones((rows, cols))
         super(Integer, self).__init__(rows, cols, *args, **kwargs)
 
     def init_z(self, random):
@@ -49,9 +50,9 @@ class Integer(NonCvxVariable):
         neighbors_list = []
         for i in range(self.size[0]):
             for j in range(self.size[1]):
-                for diff in [1,-1]:
+                for diff in [1, -1]:
                     new_mat = matrix.copy()
-                    new_mat[i,j] = new_mat[i,j] + diff
+                    new_mat[i, j] = new_mat[i, j] + diff
                     neighbors_list += [new_mat]
         return neighbors_list
 

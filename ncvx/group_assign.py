@@ -92,8 +92,8 @@ class GroupAssign(Boolean):
                 if np.all(matrix[i, :] == matrix[j, :]):
                     continue
                 else:
-                    new_mat[j,:] = matrix[i,:]
-                    new_mat[i,:] = matrix[j,:]
+                    new_mat[j, :] = matrix[i, :]
+                    new_mat[i, :] = matrix[j, :]
                     neighbors_list += [new_mat]
                     break
         return neighbors_list
