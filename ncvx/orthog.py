@@ -22,6 +22,7 @@ import cvxpy as cvx
 import numpy as np
 import scipy.sparse as sp
 
+
 class Orthog(NonCvxVariable):
     """ A variable satisfying X^TX = I. """
     def __init__(self, size, *args, **kwargs):
@@ -48,6 +49,6 @@ class Orthog(NonCvxVariable):
         """
         rows, cols = self.size
         constr = super(Orthog, self).relax()
-        mat  = cvx.bmat([[np.eye(rows), self],
-                         [X.T, np.eye(cols)]])
+        mat = cvx.bmat([[np.eye(rows), self],
+                        [X.T, np.eye(cols)]])
         return constr + [mat >> 0]
